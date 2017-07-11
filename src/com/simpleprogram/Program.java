@@ -1,7 +1,6 @@
 package com.simpleprogram;
 
 import java.util.Date;
-import java.util.Map.Entry;
 
 import org.hibernate.Session;
 
@@ -15,7 +14,7 @@ public class Program {
 		User user = new User();
 		user.setName("user");
 		user.getProteinData().setGoal(90);
-		user.getUserHistories().put("1", new UserHistory(new Date(), "Set the goal to 90"));
+		user.getUserHistories().add(new UserHistory(new Date(), "Set the goal to 90"));
 		session.save(user);
 
 		session.getTransaction().commit();
@@ -25,13 +24,12 @@ public class Program {
 		User loaduser = (User) session.get(User.class, 1);
 		System.out.println(loaduser.getName());
 
-		for (Entry<String, UserHistory> entry : loaduser.getUserHistories().entrySet()) {
-			System.out.println(entry.getKey());
-			System.out.println(entry.getValue().getEntryDate() + " " + entry.getValue().getEntry());
+		for (UserHistory userHistory : loaduser.getUserHistories()) {
+			System.out.println(userHistory.getEntryDate() + " " + userHistory.getEntry());
 		}
 
 		loaduser.getProteinData().setTotal(loaduser.getProteinData().getTotal() + 90);
-		loaduser.getUserHistories().put("2", new UserHistory(new Date(), "Set the total to 90"));
+		loaduser.getUserHistories().add(new UserHistory(new Date(), "Set the total to 90"));
 
 		session.getTransaction().commit();
 

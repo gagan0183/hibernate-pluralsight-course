@@ -1,13 +1,13 @@
 package com.simpleprogram;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class User {
 	private int id;
 	private String name;
 	private ProteinData proteinData = new ProteinData();
-	private Map<String, UserHistory> userHistories = new HashMap<String, UserHistory>();
+	private Collection<UserHistory> userHistories = new ArrayList<UserHistory>();
 
 	public int getId() {
 		return id;
@@ -33,11 +33,11 @@ public class User {
 		this.proteinData = proteinData;
 	}
 
-	public Map<String, UserHistory> getUserHistories() {
+	public Collection<UserHistory> getUserHistories() {
 		return userHistories;
 	}
 
-	public void setUserHistories(Map<String, UserHistory> userHistories) {
+	public void setUserHistories(Collection<UserHistory> userHistories) {
 		this.userHistories = userHistories;
 	}
 }
