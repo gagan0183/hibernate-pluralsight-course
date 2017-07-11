@@ -1,5 +1,7 @@
 package com.simpleprogram;
 
+import java.util.Date;
+
 import org.hibernate.Session;
 
 public class Program {
@@ -11,7 +13,8 @@ public class Program {
 		
 		User user = new User();
 		user.setName("user");
-		user.setGoal(9);
+		user.getProteinData().setGoal(90);
+		user.getUserHistories().add(new UserHistory(new Date(), "Set the goal to 90"));
 		session.save(user);
 
 		session.getTransaction().commit();
@@ -21,8 +24,9 @@ public class Program {
 		User loaduser = (User) session.get(User.class, 1);
 		System.out.println(loaduser.getName());
 		
-		loaduser.setTotal(loaduser.getTotal() + 90);
-		
+		loaduser.getProteinData().setTotal(loaduser.getProteinData().getTotal() + 90);
+		loaduser.getUserHistories().add(new UserHistory(new Date(), "Set the total to 90"));
+
 		session.getTransaction().commit();
 		
 		session.close();

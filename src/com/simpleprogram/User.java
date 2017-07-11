@@ -1,10 +1,13 @@
 package com.simpleprogram;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
 	private int id;
 	private String name;
-	private int total;
-	private int goal;
+	private ProteinData proteinData = new ProteinData();
+	private Set<UserHistory> userHistories = new HashSet<>();
 	public int getId() {
 		return id;
 	}
@@ -17,16 +20,16 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getTotal() {
-		return total;
+	public ProteinData getProteinData() {
+		return proteinData;
 	}
-	public void setTotal(int total) {
-		this.total = total;
+	public void setProteinData(ProteinData proteinData) {
+		this.proteinData = proteinData;
 	}
-	public int getGoal() {
-		return goal;
+	public Set<UserHistory> getUserHistories() {
+		return userHistories;
 	}
-	public void setGoal(int goal) {
-		this.goal = goal;
+	public void setUserHistories(Set<UserHistory> userHistories) {
+		this.userHistories = userHistories;
 	}
 }

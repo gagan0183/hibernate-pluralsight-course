@@ -11,11 +11,20 @@
         <property name="name" type="java.lang.String">
             <column name="NAME" />
         </property>
-        <property name="total" type="int">
-            <column name="TOTAL" />
-        </property>
-        <property name="goal" type="int">
-            <column name="GOAL" />
-        </property>
+        <component name="proteinData">
+	        <property name="total" type="int">
+	            <column name="TOTAL" />
+	        </property>
+	        <property name="goal" type="int">
+	            <column name="GOAL" />
+	        </property>
+        </component>
+        <set name="userHistories" table="USER_HISTORY">
+        	<key column="ID"/>
+        	<composite-element class="com.simpleprogram.UserHistory">
+        		<property name="entryDate" type="date" column="entryDate"></property>
+        		<property name="entry" type="string" column="entry"></property>
+        	</composite-element>
+        </set>
     </class>
 </hibernate-mapping>
